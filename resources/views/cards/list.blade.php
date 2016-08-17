@@ -5,41 +5,26 @@
     <div class="row">
         <div class="col-md-10 col-md-offset-1">
             <div class="panel panel-default">
-                <div class="panel-heading">Dashboard</div>
+                <div class="panel-heading">Card List</div>
 
                 <div class="panel-body">
                     <table class="table table-full">
                         <thead>
                             <tr>
                                 <th><input type="checkbox" class="relative"></th>
-                                <th>Beacon ID</th>
-                                <th>Type</th>
-                                <th>Status</th>
-                                <th>Battery Level</th>
-                                <th>Last seen</th>
-                                <th>Broadcasting</th>
+                                <th>Card ID</th>
+                                <th>Name</th>
                                 <th>Actions</th>
                             </tr>
                         </thead>
                         <tbody>
-                        @foreach ($beacons as $beacon)
+                        @foreach ($cards as $card)
                             <tr>
                                 <td><input type="checkbox" class="relative"></td>
-                                <td>{{ $beacon->beacon_id }}</td>
-                                <td>{{ $beacon->getReadableType() }}</td>
-                                <td>{{ $beacon->getReadableStatus() }}</td>
-                                <td>{{ $beacon->battery or '?' }}</td>
-                                <td>-</td>
+                                <td>{{ $card->id }}</td>
+                                <td>{{ $card->name }}</td>
                                 <td>
-                                    @if ($beacon->hasUrl())
-                                        <i class="fa fa-fw fa-link"></i>
-                                    @endif
-                                    @if ($beacon->hasCard())
-                                        <i class="fa fa-fw fa-file-text-o"></i>
-                                    @endif
-                                </td>
-                                <td>
-                                    <a href="{{ url('/beacons/edit') }}?id={{ $beacon->beacon_id }}" class="btn btn-link btn-round" data-title="Edit item">
+                                    <a href="{{ url('/cards/edit') }}?id={{ $card->id }}" class="btn btn-link btn-round" data-title="Edit item">
                                         <i class="fa fa-fw fa-pencil"></i>
                                     </a>
                                     <button type="button" class="btn btn-link btn-round" data-title="Delete item">
@@ -54,7 +39,7 @@
 
                 <div class="panel-footer">
                     <div class="text-right">
-                        <a class="btn btn-primary" href="{{ url('/beacons/add') }}">Add Beacon</a>
+                        <a class="btn btn-primary" href="{{ url('/cards/add') }}">Create Card</a>
                     </div>
                 </div>
             </div>

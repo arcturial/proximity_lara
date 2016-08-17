@@ -35,14 +35,29 @@ class HomeController extends Controller
      */
     public function add(Request $request)
     {
+        $user = \Auth::user();
+
         if ($beaconData = $request->get('beacon')) {
 
-            $beaconData['user_id'] = \Auth::user()->id;
+            $beaconData['user_id'] = $user->id;
 
             \App\Beacon::create($beaconData);
 
             return redirect('/')->with('status', 'Beacon registered successfully.');
         }
-        return view('add');
+
+        $cards = \App\Card::where('user_id', $user->id)->get();
+
+        return view('add', ['cards' => $cards]);
+    }
+
+    public function edit(Request $request)
+    {
+        if ($beaconId = $request->get('id')) {
+
+            return view('edit');
+        }
+
+        return redirect()->back();
     }
 }

@@ -14,6 +14,15 @@
 // Beacon Routes
 Route::get('/', 'HomeController@index');
 Route::get('/beacons/add', 'HomeController@add');
+Route::get('/beacons/edit', 'HomeController@edit');
+
+// Card Routes
+Route::get('/cards/', 'CardController@index');
+Route::get('/cards/add', 'CardController@add');
+
+// Deck Routes
+Route::get('/decks/', 'DeckController@index');
+Route::get('/decks/add', 'DeckController@add');
 
 // Authentication routes...
 Route::get('auth/login', 'Auth\AuthController@getLogin');

@@ -36,5 +36,15 @@ class Beacon extends Model
         return self::TYPES[$this->type];
     }
 
+    public function hasUrl()
+    {
+        return !empty($this->url);
+    }
+
+    public function hasCard()
+    {
+        return $this->card_id > 0;
+    }
+
 
 }

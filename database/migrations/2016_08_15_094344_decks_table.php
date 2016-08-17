@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class BeaconsTable extends Migration
+class DecksTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,15 +12,10 @@ class BeaconsTable extends Migration
      */
     public function up()
     {
-        Schema::create('beacons', function (Blueprint $table) {
+        Schema::create('decks', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('beacon_id');
             $table->integer('user_id');
-            $table->integer('card_id')->nullable();
-            $table->integer('type');
-            $table->integer('status');
-            $table->integer('battery')->nullable();
-            $table->string('description');
+            $table->string('name');
         });
     }
 
@@ -31,6 +26,6 @@ class BeaconsTable extends Migration
      */
     public function down()
     {
-        Schema::drop('beacons');
+        Schema::drop('decks');
     }
 }

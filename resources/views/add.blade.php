@@ -22,6 +22,16 @@
                             </div>
                         </div>
                         <div class="form-group">
+                            <label for="beacon[card_id]" class="col-sm-2 control-label">Card</label>
+                            <div class="col-sm-10">
+                                <select name="beacon[card_id]" class="form-control">
+                                @foreach ($cards as $card)
+                                    <option value="{{ $card->id }}">{{ $card->name }}</option>
+                                @endforeach
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
                             <div class="col-sm-offset-2 col-sm-10">
                                 <button type="submit" class="btn btn-default">Register</button>
                             </div>
